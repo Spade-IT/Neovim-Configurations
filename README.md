@@ -10,6 +10,7 @@ setup from scratch, every option and plugin, the **discipline system**, and a fu
 ---
 
 ## Table of contents
+
 1. [Directory layout](#1-directory-layout)
 2. [LazyVim from scratch (no starter repo)](#2-lazyvim-from-scratch-no-starter-repo)
 3. [External tools & language providers](#3-external-tools--language-providers)
@@ -265,6 +266,7 @@ Some keys only do something in the right context. If a key "does nothing," check
 | `jk` / `jj` / `<Esc>` | ★ leave insert mode |
 
 ### Editing — operators, objects, registers (Vim built-ins)
+
 An **operator** + a **motion/text-object** = an edit. `d`=delete, `c`=change, `y`=yank, `>`/`<`=indent, `gu`/`gU`=lower/upper, `=`=re-indent.
 
 | Key | Action |
@@ -531,12 +533,14 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
   haven't installed — those are opt-in per language.
 
 ### Informational-only checkhealth items (safe to ignore)
+
 - which-key "overlapping keymaps" (`gc`, `a`, `i`) — prefix relationships (comment operator,
   mini.ai text objects), **not** conflicts.
 - blink "disabled" sources, snacks `statuscolumn`/`image` "disabled" — dynamic or opt-in.
 - mason "not available" for Go/cargo/java/julia — only needed when you install a tool that uses them.
 
 ### Reference
+
 LazyVim keymaps <https://www.lazyvim.org/keymaps> 
 options <https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua> 
 docs <https://www.lazyvim.org>.
