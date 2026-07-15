@@ -135,6 +135,24 @@ end, { bang = true, desc = "Quit Neovim (close all files + close the editor)" })
 
 map("n", "<leader>H", "<cmd>Home<cr>", { desc = "<leader>H -> home (close files -> dashboard)" }) -- key: Space H
 
+-- Override <leader>bd: deleting your LAST open file should land on the dashboard, not quit
+-- Neovim. When it's the last file we open the dashboard FIRST (so the window keeps a buffer),
+-- then delete the file -- so Neovim never loses its only buffer and exits.
+map("n", "<leader>bd", function()
+  if vim.bo.filetype == "snacks_dashboard" then
+    return -- nothing to close on the home screen
+  end
+  if files_open() <= 1 then
+    local cur = vim.api.nvim_get_current_buf()
+    go_home() -- dashboard takes over the window
+    pcall(vim.api.nvim_buf_delete, cur, { force = false }) -- then drop the (now hidden) file
+  else
+    pcall(function()
+      Snacks.bufdelete()
+    end)
+  end
+end, { desc = "Delete buffer (last file -> home, not quit)" })
+
 -- Auto: closing the LAST open file returns you to the dashboard. BufDelete fires on :bd /
 -- <leader>bd but NOT on :qa, so this never blocks quitting Neovim.
 vim.api.nvim_create_autocmd("BufDelete", {

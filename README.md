@@ -329,7 +329,7 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 | `` <leader>``  | Switch to the other/last buffer |
 | `<S-h>` / `<S-l>` | previous / next buffer |
 | `[b` / `]b` | previous / next buffer |
-| `<leader>bd` | delete buffer (keep window) |
+| `<leader>bd` | delete buffer — your **last** file lands on the dashboard (won't quit nvim) |
 | `<leader>bo` | delete **other** buffers |
 | `<leader>bD` | delete buffer **and** window |
 | `<leader>bp` / `<leader>bP` | pin / delete non-pinned buffers |
