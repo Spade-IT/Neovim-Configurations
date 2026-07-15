@@ -5,7 +5,8 @@ This README is a **complete reference**: how the config is structured, how to bu
 setup from scratch, every option and plugin, the **discipline system**, and a full
 **keybinding reference** covering Vim / Neovim / LazyVim defaults *plus* everything we added.
 
-> Base: LazyVim (no extras enabled). Anything marked **★ custom** is added on top.
+> Base: LazyVim + a few **extras** (see [section 5](#5-plugins)). Anything marked
+> **★ custom** is added on top.
 
 ---
 
@@ -45,7 +46,7 @@ via the native keys in section 7.
 │       └── example.lua             LazyVim examples (inactive: `if true then return {} end`)
 ├── setup/                          ★ install scripts: nvim-setup.ps1 (Windows) / .sh (macOS/Linux)
 ├── lazy-lock.json                  plugin version lockfile
-└── lazyvim.json                    which LazyVim "extras" are enabled (none right now)
+└── lazyvim.json                    which LazyVim "extras" are enabled (4 -- see section 5)
 ```
 
 Data (plugins, parsers, mason) lives in `~/AppData/Local/nvim-data/`.
@@ -161,6 +162,19 @@ Change an option in `lua/config/options.lua`, e.g. `vim.opt.wrap = true`.
   automatically the moment you leave insert (`<Esc>` / `jk`). Toggle with `<leader>um`; if borders
   ever look broken, `<leader>mr` re-renders + forces a full redraw.
 - **nvim-treesitter** (`treesitter.lua`) — adds the `latex` parser.
+
+### Extras (`lazyvim.json`) — toggle with `:LazyExtras`
+
+| Extra | Gives you |
+|-------|-----------|
+| `coding.yanky` | yank ring / better paste history |
+| `lang.python` | Python LSP + tooling |
+| `lang.toml` | TOML LSP + tooling |
+| `util.dot` | dotfile support |
+
+> `lang.markdown` is **deliberately off**. It ships `markdownlint-cli2` (which lints this
+> README) and `render-markdown.nvim`, which duplicates — and fights with — **markview.nvim**,
+> our chosen markdown renderer. Re-enabling it will bring both back.
 
 ### Base (LazyVim) — active, browse with `:Lazy`
 
@@ -335,7 +349,7 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 | `<leader>bo` | delete **other** buffers |
 | `<leader>bD` | delete buffer **and** window |
 | `<leader>bp` / `<leader>bP` | pin / delete non-pinned buffers |
-| `<leader>H` | ★ **home** — close all files and go to the dashboard (start screen) |
+| `<leader>h` / `<leader>H` | ★ **home** — close all files and go to the dashboard (start screen). Both cases work |
 
 > Auto-return: closing the **last** open file (e.g. `<leader>bd` on your only file) drops you
 > back to the dashboard automatically. Unsaved files are kept, not force-closed.
@@ -482,7 +496,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 
 ### Markdown (markview)
 
- Key | Action |
+| Key | Action |
 |-----|--------|
 | `<leader>um` | ★ toggle render (`:Markview Toggle`) |
 | `<leader>ms` | ★ split preview (`:Markview splitToggle`) |
@@ -511,7 +525,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 
 | Command | Action |
 |---------|--------|
-| `:Home` | ★ close all files and go to the dashboard (homepage) — stays in Neovim. Also `<leader>H` |
+| `:Home` | ★ close all files and go to the dashboard (homepage) — stays in Neovim. Also `<leader>h` / `<leader>H` |
 | `:Quit` / `:Quit!` | ★ close all files **and** exit Neovim (`:qa` / `:qa!`). Also `<leader>qq` |
 | `:TrimWhitespace` | ★ remove trailing whitespace across the file (cursor kept) |
 | `:Cd` | ★ cd to the current file's folder |

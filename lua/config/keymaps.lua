@@ -133,6 +133,8 @@ vim.api.nvim_create_user_command("Quit", function(o)
   vim.cmd(o.bang and "qa!" or "qa")
 end, { bang = true, desc = "Quit Neovim (close all files + close the editor)" })
 
+-- Both cases are mapped, so you never have to reach for Shift: Space h == Space H.
+map("n", "<leader>h", "<cmd>Home<cr>", { desc = "<leader>h -> home (close files -> dashboard)" }) -- key: Space h
 map("n", "<leader>H", "<cmd>Home<cr>", { desc = "<leader>H -> home (close files -> dashboard)" }) -- key: Space H
 
 -- Override <leader>bd: deleting your LAST open file should land on the dashboard, not quit

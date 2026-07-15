@@ -48,25 +48,30 @@ full keybinding table covering Vim/Neovim/LazyVim defaults *plus* customs).
 
 ## Markdown rules (this bites every time)
 
-The repo is **markdownlint-clean**; config in `.markdownlint.json`
-(line_length 100; `tables` and `code_blocks` exempt because table rows and the
-ASCII tree physically cannot be wrapped). Verify with:
+**The renderer is the spec, not a linter.** These docs are read inside Neovim via
+**markview.nvim**. `lang.markdown` is deliberately disabled, so `markdownlint` is
+*not* part of this setup — do not add it back or "fix" docs to satisfy it.
 
-```bash
-npx --yes markdownlint-cli README.md      # must print nothing
-npx --yes markdownlint-cli --fix README.md  # auto-fixes pipes/spacing safely
-```
+**Never run `markdownlint --fix` on these files.** It is not safe and has already
+corrupted this README once:
 
-Hard-won gotchas:
+- It rewrote every table's delimiter row from compact (`|-----|`) to spaced
+  (`| ----- |`) — markview renders from those rows.
+- Its MD038 "fix" stripped the spaces out of `` `` <leader>`` `` , silently
+  deleting the literal backtick and documenting **the wrong keybinding**.
+
+If you touch a doc, judge it by whether markview renders it, not by a lint score.
+
+Real invariants (these actually break rendering):
 
 - **A table needs a blank line before it** or it renders as literal text. This is
   the single most common breakage here.
-- **A heading needs a blank line after it** (MD022), and a list needs blank lines
-  around it (MD032).
 - **Every table row needs a leading *and* trailing pipe.** A missing leading pipe
-  silently breaks the table (MD055 catches it).
+  silently breaks the whole table.
+- **A literal pipe inside a cell must be escaped `\|`** (e.g. `` `<leader>\|` ``).
 - **Avoid backticks inside table cells that wrap other backticks** — it breaks
   markview's column-width calculation. Spell it out ("backtick-backtick") instead.
+- A heading wants a blank line after it; a list wants blank lines around it.
 
 ## Verifying changes
 
@@ -85,8 +90,13 @@ Trigger lazy-loaded plugins first with
 - **Do not run `:Lazy clean` / delete `nvim-data/` without being asked** — it
   destroys installed plugins.
 - **Extras** (`lazyvim.json`) are enabled via `:LazyExtras`, not by hand-editing
-  when avoidable. Note `editor.neo-tree` and `editor.telescope` **replace**
-  snacks.explorer/snacks.picker and would invalidate the documented explorer keys.
+  when avoidable. Three are off *on purpose* — re-enabling them breaks things:
+  - `editor.neo-tree` / `editor.telescope` **replace** snacks.explorer and
+    snacks.picker, invalidating the documented explorer keys.
+  - `lang.markdown` ships `markdownlint-cli2` **and** `render-markdown.nvim`,
+    which duplicates and fights markview.nvim.
+- There has never been a "no extras" commit — `lazyvim.json` has had extras since
+  the initial commit. Don't go looking for one to revert to.
 - `lazy-lock.json` and `lazyvim.json` get rewritten by Neovim on its own. Don't
   sweep that churn into an unrelated commit; keep commits focused.
 - Line endings are governed by `.gitattributes` (`.sh` = LF, `.ps1` = CRLF). The
