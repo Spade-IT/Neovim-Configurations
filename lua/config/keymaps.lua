@@ -109,8 +109,11 @@ local function go_home()
   if vim.bo.filetype == "snacks_dashboard" then
     return -- already home; don't stack another dashboard
   end
+  -- Collapse to a single window and open the dashboard *in it*, so the result is identical to
+  -- the start screen you get from a bare `nvim` (one window, no stray empties).
+  pcall(vim.cmd, "silent! only")
   pcall(function()
-    Snacks.dashboard.open()
+    Snacks.dashboard.open({ win = vim.api.nvim_get_current_win() })
   end)
 end
 
