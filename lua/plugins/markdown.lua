@@ -14,13 +14,20 @@ return {
     ft = { "markdown", "markdown.mdx", "rmd", "quarto" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
-      -- Read view in NORMAL mode; INSERT mode shows raw markdown so you can edit, and markview
-      -- re-renders automatically the instant you leave insert (<Esc> / jk). This is markview's
-      -- reliable default -- forcing rendering *during* insert (the old hybrid config) is what
-      -- left the view stale and un-refreshed.
+      -- Read view in NORMAL mode. In INSERT mode the buffer STAYS rendered and only the line
+      -- under the cursor drops to raw markdown -- so a table keeps its borders and columns
+      -- while you edit one row, instead of the whole file collapsing to raw text.
+      --
+      -- Note: hybrid was disabled here once because tables "looked broken even after leaving
+      -- insert". That was a misdiagnosis. The real cause was 'wrap' being on in markdown, which
+      -- makes markview fall back to ASCII "-"/"|" borders (now fixed in config/autocmds.lua).
+      -- Hybrid was never the problem.
       preview = {
-        modes = { "n", "no", "c" }, -- render in normal / operator-pending / command modes
-        hybrid_modes = {},          -- no per-line hybrid; the whole buffer is raw while editing
+        modes = { "n", "no", "c", "i" }, -- render in normal / op-pending / command / INSERT
+        hybrid_modes = { "i" },          -- ...but in insert, un-render the cursor's line only
+        -- Un-render the whole cursor LINE, not just the node under the cursor -- otherwise you
+        -- get a half-rendered table row while typing in a cell.
+        linewise_hybrid_mode = true,
       },
     },
     keys = {
