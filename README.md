@@ -338,6 +338,31 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 > Auto-return: closing the **last** open file (e.g. `<leader>bd` on your only file) drops you
 > back to the dashboard automatically. Unsaved files are kept, not force-closed.
 
+#### Inside the file explorer (snacks.explorer — open with `<leader>e`)
+
+These keys work **while the explorer window is focused** (it's a picker, so `/` filters live,
+`<Esc>`/`q` closes it, `<CR>` or `l` opens, `<C-n>`/`<C-p>` move the selection).
+
+| Key | Action |
+|-----|--------|
+| `H` | toggle **hidden** files (dotfiles like `.gitignore`) |
+| `I` | toggle **ignored** files (git-ignored, e.g. `node_modules`) |
+| `l` / `<CR>` | open file / expand directory |
+| `h` | collapse (close) the directory |
+| `<BS>` | go **up** to the parent directory |
+| `.` | set the explorer's focus/root to the item under the cursor |
+| `a` / `d` / `r` | **add** (new file/dir) / **delete** / **rename** |
+| `c` / `m` | **copy** / **move** the item |
+| `y` / `p` | **yank** (copy path) / **paste** the yanked item here |
+| `o` | **open** with the system default application |
+| `u` | refresh / **update** the tree |
+| `P` | toggle the **preview** pane |
+| `Z` | **close all** open directories |
+| `<c-c>` | `tcd` — set tab-local cwd to the item |
+| `<leader>/` | **grep** inside the focused directory |
+| `]g` / `[g` | next / previous **git-changed** file |
+| `]d` / `[d` · `]w` / `[w` · `]e` / `[e` | next/prev **diagnostic** · **warning** · **error** |
+
 ### Windows & splits
 
 | Key | Action |
