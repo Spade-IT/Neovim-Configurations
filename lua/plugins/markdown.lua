@@ -29,6 +29,20 @@ return {
         -- get a half-rendered table row while typing in a cell.
         linewise_hybrid_mode = true,
       },
+
+      markdown = {
+        tables = {
+          -- Draw a table's top/bottom borders as REAL virtual lines instead of markview's
+          -- default, which hangs them off the neighbouring buffer line as inline virt_text
+          -- (`virt_text_pos = "inline"` on range.row_start - 1). Neovim repaints those
+          -- borrowed cells lazily, so corners stayed open until the cursor passed through
+          -- them. Virtual lines own their row and always paint.
+          --
+          -- Cost: the border occupies a screen line above/below the table (it is not in the
+          -- buffer, so nothing you edit or yank changes).
+          use_virt_lines = true,
+        },
+      },
     },
     keys = {
       { "<leader>um", "<cmd>Markview Toggle<cr>", desc = "Toggle Markdown render" },   -- key: Space u m
