@@ -117,8 +117,7 @@ Installer scripts live in `setup/` — `nvim-setup.ps1` (Windows) and `nvim-setu
 - `lazygit` — git UI (`<leader>gg`)
 - `tree-sitter` CLI + C compiler — building treesitter parsers
 - `ast-grep` (sg) — structural search (grug-far)
-- `ImageMagick`, `Ghostscript` (gs), `Tectonic`, `mmdc` — snacks.image:
-  image / PDF / LaTeX / Mermaid tooling
+- `ImageMagick`, `Ghostscript` (gs), `Tectonic`, `mmdc` — snacks.image: image / PDF / LaTeX / Mermaid tooling
 - `win32yank` — system clipboard
 
 > Displaying image previews in-terminal needs a graphics-capable terminal (kitty / ghostty /
@@ -135,7 +134,7 @@ Installer scripts live in `setup/` — `nvim-setup.ps1` (Windows) and `nvim-setu
 [LazyVim's defaults](https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua):
 
 | Option | Value | Meaning |
-| -------- | ------- | --------- |
+|--------|-------|---------|
 | `number` / `relativenumber` | on | absolute + relative line numbers |
 | `expandtab` / `shiftwidth` / `tabstop` | true / 2 / 2 | spaces, 2-wide indent |
 | `clipboard` | `unnamedplus` | yank/paste use the system clipboard |
@@ -217,7 +216,7 @@ Some keys only do something in the right context. If a key "does nothing," check
 ### Modes
 
 | Key | From | Action |
-| ----- | ------ | -------- |
+|-----|------|--------|
 | `i` / `a` | vim | insert before / after cursor |
 | `I` / `A` | vim | insert at first non-blank / end of line |
 | `o` / `O` | vim | open new line below / above and insert |
@@ -229,7 +228,7 @@ Some keys only do something in the right context. If a key "does nothing," check
 ### Moving around (normal mode — Vim built-ins)
 
 | Key | Moves to |
-| ----- | ---------- |
+|-----|----------|
 | `h` `j` `k` `l` | left · down · up · right |
 | `w` / `W` | start of next word / WORD (WORD = whitespace-delimited) |
 | `e` / `E` | end of next word / WORD |
@@ -255,7 +254,7 @@ Some keys only do something in the right context. If a key "does nothing," check
 ### Insert mode (native — arrows are off here)
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<C-w>` | delete the **word before** the cursor |
 | `<C-u>` | delete from cursor to **start of line** |
 | `<C-h>` | delete one char (Backspace) |
@@ -268,11 +267,10 @@ Some keys only do something in the right context. If a key "does nothing," check
 
 ### Editing — operators, objects, registers (Vim built-ins)
 
-An **operator** + a **motion/text-object** = an edit. `d`=delete, `c`=change,
-`y`=yank, `>`/`<`=indent, `gu`/`gU`=lower/upper, `=`=re-indent.
+An **operator** + a **motion/text-object** = an edit. `d`=delete, `c`=change, `y`=yank, `>`/`<`=indent, `gu`/`gU`=lower/upper, `=`=re-indent.
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `x` / `X` | delete char under / before cursor |
 | `dd` / `cc` / `yy` | delete / change / yank whole line |
 | `D` / `C` / `Y` | delete / change / yank to end of line |
@@ -296,7 +294,7 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 ### Visual mode
 
 | Key | Mode | Action |
-| ----- | ------ | -------- |
+|-----|------|--------|
 | `v` / `V` / `<C-v>` | n | start char / line / block selection |
 | `o` | x | jump to the other end of the selection |
 | `gv` | n | reselect the last visual selection |
@@ -308,7 +306,7 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 ### Search & replace
 
 | Key / cmd | Action |
-| ----------- | -------- |
+|-----------|--------|
 | `/` / `?` | search forward / backward |
 | `n` / `N` | ★ next / prev match (centered) |
 | `*` / `#` | search word under cursor |
@@ -321,7 +319,7 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 ### Files, buffers & explorer (LazyVim)
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<leader><leader>` | Find files (root dir) |
 | `<leader>ff` / `<leader>fF` | Find files (root / cwd) |
 | `<leader>fg` | Find git files |
@@ -330,7 +328,7 @@ tag. mini.ai adds `if`/`af` function, `ic`/`ac` class, `a` next/last variants (`
 | `<leader>fp` | Projects |
 | `<leader>e` / `<leader>E` | Explorer (root / cwd) |
 | `<leader>,` | Switch buffer (picker) |
-| ``<leader>`` | Switch to the other/last buffer |
+| `` <leader>``  | Switch to the other/last buffer |
 | `<S-h>` / `<S-l>` | previous / next buffer |
 | `[b` / `]b` | previous / next buffer |
 | `<leader>bd` | delete buffer — your **last** file lands on the dashboard (won't quit nvim) |
@@ -348,7 +346,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 `<Esc>`/`q` closes it, `<CR>` or `l` opens, `<C-n>`/`<C-p>` move the selection).
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `H` | toggle **hidden** files (dotfiles like `.gitignore`) |
 | `I` | toggle **ignored** files (git-ignored, e.g. `node_modules`) |
 | `l` / `<CR>` | open file / expand directory |
@@ -370,7 +368,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Windows & splits
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<leader>-` | split **below** (horizontal) |
 | `<leader>\|` | split **right** (vertical) |
 | `<C-w>s` / `<C-w>v` | split horizontal / vertical (raw Vim) |
@@ -385,7 +383,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Tabs
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<leader><Tab><Tab>` | new tab |
 | `<leader><Tab>]` / `<leader><Tab>[` | next / previous tab |
 | `<leader><Tab>f` / `<leader><Tab>l` | first / last tab |
@@ -395,7 +393,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Code / LSP (buffer-local — when a server is attached)
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `gd` / `gD` | go to definition / declaration |
 | `gr` | references |
 | `gI` | go to implementation |
@@ -414,7 +412,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Diagnostics, quickfix & trouble
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `]d` / `[d` | next / previous diagnostic |
 | `]e` / `[e` | next / previous **error** |
 | `]w` / `[w` | next / previous **warning** |
@@ -427,7 +425,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Git (buffer-local — gitsigns + snacks)
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<leader>gg` | **lazygit** (full git UI) |
 | `<leader>gb` | git blame line |
 | `<leader>gf` | current file history |
@@ -442,7 +440,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Search menu — pickers (`<leader>s…`)
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<leader>sk` | **keymaps** (search all your bindings) |
 | `<leader>sh` | help pages |
 | `<leader>sg` / `<leader>sG` | grep (root / cwd) |
@@ -459,7 +457,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### UI toggles (`<leader>u…`)
 
 | Key | Toggles |
-| ----- | --------- |
+|-----|---------|
 | `<leader>uw` | line wrap |
 | `<leader>ul` / `<leader>uL` | line numbers / relative numbers |
 | `<leader>ud` | diagnostics |
@@ -476,7 +474,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Comments (built-in `gc` + LazyVim)
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `gcc` | toggle comment on the line |
 | `gc{motion}` | toggle comment over a motion (e.g. `gcap`, `gc2j`) |
 | `gc` (visual) | toggle comment on selection |
@@ -484,8 +482,8 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 
 ### Markdown (markview)
 
-| Key | Action |
-| ----- | -------- |
+ Key | Action |
+|-----|--------|
 | `<leader>um` | ★ toggle render (`:Markview Toggle`) |
 | `<leader>ms` | ★ split preview (`:Markview splitToggle`) |
 | `<leader>mr` | ★ re-render + full redraw — use if table/heading borders ever look broken |
@@ -493,7 +491,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### System clipboard (`+` register)
 
 | Key | Mode | Action |
-| ----- | ------ | -------- |
+|-----|------|--------|
 | `<leader>y` / `<leader>Y` | n, x | ★ yank (line) to system clipboard |
 | `<leader>P` | n, x | ★ paste from system clipboard |
 | `"+y` / `"+p` | n, x | yank / paste via the `+` (system) register |
@@ -501,7 +499,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ### Misc
 
 | Key | Action |
-| ----- | -------- |
+|-----|--------|
 | `<C-s>` | ★ save file |
 | `<leader>qq` | quit all |
 | `<leader>l` | Lazy (plugin manager) |
@@ -512,7 +510,7 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 ## 8. User commands
 
 | Command | Action |
-| --------- | -------- |
+|---------|--------|
 | `:Home` | ★ close all files and go to the dashboard (homepage) — stays in Neovim. Also `<leader>H` |
 | `:Quit` / `:Quit!` | ★ close all files **and** exit Neovim (`:qa` / `:qa!`). Also `<leader>qq` |
 | `:TrimWhitespace` | ★ remove trailing whitespace across the file (cursor kept) |
@@ -539,11 +537,10 @@ These keys work **while the explorer window is focused** (it's a picker, so `/` 
 - which-key "overlapping keymaps" (`gc`, `a`, `i`) — prefix relationships (comment operator,
   mini.ai text objects), **not** conflicts.
 - blink "disabled" sources, snacks `statuscolumn`/`image` "disabled" — dynamic or opt-in.
-- mason "not available" for Go/cargo/java/julia — only needed when you install a
-  tool that uses them.
+- mason "not available" for Go/cargo/java/julia — only needed when you install a tool that uses them.
 
 ### Reference
 
-LazyVim keymaps <https://www.lazyvim.org/keymaps>
-options <https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua>
+LazyVim keymaps <https://www.lazyvim.org/keymaps> 
+options <https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua> 
 docs <https://www.lazyvim.org>.
