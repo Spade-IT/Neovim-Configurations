@@ -30,7 +30,7 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "solarized-osaka", "habamax" } },
   -- No plugins here need luarocks, and building it on Windows is unreliable, so disable
   -- luarocks support entirely (removes the luarocks/lua :checkhealth warnings for good).
   rocks = { enabled = false },

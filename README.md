@@ -82,7 +82,7 @@ require("lazy").setup({
     { import = "plugins" },                            -- your own lua/plugins/*.lua
   },
   defaults = { lazy = false, version = false },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "solarized-osaka", "habamax" } },
   rocks = { enabled = false },   -- skip luarocks (nothing here needs it)
   checker = { enabled = true, notify = false },
 })
@@ -162,6 +162,9 @@ Change an option in `lua/config/options.lua`, e.g. `vim.opt.wrap = true`.
   automatically the moment you leave insert (`<Esc>` / `jk`). Toggle with `<leader>um`; if borders
   ever look broken, `<leader>mr` re-renders + forces a full redraw.
 - **nvim-treesitter** (`treesitter.lua`) — adds the `latex` parser.
+- **solarized-osaka.nvim** (`osaka.lua`) — active colorscheme, set via LazyVim's
+  `opts.colorscheme` (same mechanism as `example.lua`'s gruvbox sample). `tokyonight` remains
+  installed as a base-LazyVim plugin but is no longer active.
 
 ### Extras (`lazyvim.json`) — toggle with `:LazyExtras`
 
