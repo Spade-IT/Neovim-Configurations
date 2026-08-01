@@ -30,32 +30,32 @@ map("i", "jj", "<Esc>", { desc = "jj -> leave insert mode (Esc)" }) -- key: j th
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Navigation -- keep the cursor centered so you never lose your place
 -- ─────────────────────────────────────────────────────────────────────────────
-map("n", "<C-d>", "<C-d>zz", { desc = "Ctrl-d -> half page down, centered" })  -- key: Ctrl+d
-map("n", "<C-u>", "<C-u>zz", { desc = "Ctrl-u -> half page up, centered" })    -- key: Ctrl+u
-map("n", "n", "nzzzv", { desc = "n -> next search match, centered" })          -- key: n
-map("n", "N", "Nzzzv", { desc = "N -> previous search match, centered" })      -- key: Shift+n
+map("n", "<C-d>", "<C-d>zz", { desc = "Ctrl-d -> half page down, centered" }) -- key: Ctrl+d
+map("n", "<C-u>", "<C-u>zz", { desc = "Ctrl-u -> half page up, centered" }) -- key: Ctrl+u
+map("n", "n", "nzzzv", { desc = "n -> next search match, centered" }) -- key: n
+map("n", "N", "Nzzzv", { desc = "N -> previous search match, centered" }) -- key: Shift+n
 
 -- Screen-position motions ("go High / Middle / Low"). LazyVim remaps H/L to Prev/Next Buffer,
 -- so the classic cursor-to-top/middle/bottom-of-screen motions live on these g-prefixed keys.
 -- (`noremap` targets Vim's built-in H/M/L, not LazyVim's buffer maps. Buffer nav stays on H/L.)
-map("n", "gh", "H", { desc = "gh -> cursor to top of visible screen (High)" })    -- key: g then h
-map("n", "gm", "M", { desc = "gm -> cursor to middle of visible screen" })         -- key: g then m
-map("n", "gl", "L", { desc = "gl -> cursor to bottom of visible screen (Low)" })   -- key: g then l
+map("n", "gh", "H", { desc = "gh -> cursor to top of visible screen (High)" }) -- key: g then h
+map("n", "gm", "M", { desc = "gm -> cursor to middle of visible screen" }) -- key: g then m
+map("n", "gl", "L", { desc = "gl -> cursor to bottom of visible screen (Low)" }) -- key: g then l
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Editing
 -- ─────────────────────────────────────────────────────────────────────────────
-map("n", "J", "mzJ`z", { desc = "J -> join line below, keep cursor put" })     -- key: Shift+j (normal)
-map("x", "J", ":m '>+1<CR>gv=gv", { desc = "J -> move selection down" })        -- key: Shift+j (visual)
-map("x", "K", ":m '<-2<CR>gv=gv", { desc = "K -> move selection up" })          -- key: Shift+k (visual)
-map("x", "<", "<gv", { desc = "< -> indent left, keep selection" })            -- key: < (visual)
-map("x", ">", ">gv", { desc = "> -> indent right, keep selection" })           -- key: > (visual)
+map("n", "J", "mzJ`z", { desc = "J -> join line below, keep cursor put" }) -- key: Shift+j (normal)
+map("x", "J", ":m '>+1<CR>gv=gv", { desc = "J -> move selection down" }) -- key: Shift+j (visual)
+map("x", "K", ":m '<-2<CR>gv=gv", { desc = "K -> move selection up" }) -- key: Shift+k (visual)
+map("x", "<", "<gv", { desc = "< -> indent left, keep selection" }) -- key: < (visual)
+map("x", ">", ">gv", { desc = "> -> indent right, keep selection" }) -- key: > (visual)
 map("x", "p", [["_dP]], { desc = "p -> paste over selection without losing yank" }) -- key: p (visual)
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- System clipboard (leader = space). These keys are free in LazyVim.
 -- ─────────────────────────────────────────────────────────────────────────────
-map({ "n", "x" }, "<leader>y", [["+y]], { desc = "<leader>y -> yank to system clipboard" })  -- key: Space y
+map({ "n", "x" }, "<leader>y", [["+y]], { desc = "<leader>y -> yank to system clipboard" }) -- key: Space y
 map("n", "<leader>Y", [["+Y]], { desc = "<leader>Y -> yank whole line to system clipboard" }) -- key: Space Y
 map({ "n", "x" }, "<leader>P", [["+p]], { desc = "<leader>P -> paste from system clipboard" }) -- key: Space P
 
@@ -63,7 +63,7 @@ map({ "n", "x" }, "<leader>P", [["+p]], { desc = "<leader>P -> paste from system
 -- Misc
 -- ─────────────────────────────────────────────────────────────────────────────
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Esc -> clear search highlight" }) -- key: Esc
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "Ctrl-s -> save file" })                    -- key: Ctrl+s
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Ctrl-s -> save file" }) -- key: Ctrl+s
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- Cherry-picked from jdhao/nvim-config (LazyVim already does auto-mkdir-on-save
@@ -94,7 +94,8 @@ end, { desc = "cd to current file's directory" })
 local function files_open()
   local n = 0
   for _, b in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_valid(b)
+    if
+      vim.api.nvim_buf_is_valid(b)
       and vim.bo[b].buflisted
       and vim.bo[b].buftype == ""
       and vim.api.nvim_buf_get_name(b) ~= ""
